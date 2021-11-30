@@ -7,6 +7,11 @@
 @stop
 
 @section('content')
+<div class="container">
+    <div>
+        <a href="{{route('cliente.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nuevo Cliente</i></button></a>
+        <a href="{{route('persona.index')}}"><button type="button" class="btn btn-primary"><i class="fas">Datos de Persona</i></button></a> 
+    </div><br>
     <table class="table">
     <thead>
         <tr>
@@ -29,20 +34,20 @@
         <td>{{$cliente->persona_a}}</td>
         -->
         <td>
-        <button type="button" class="btn btn-outline-success"><a class="btn " href="{{route('cliente.edit',$cliente->id)}}">Editar</a></button>
-            <button type="button" class="btn btn-outline-warning">
+            <a class href="{{route('cliente.edit',$cliente->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
+            <i class="fas ">
                 <form action="{{route('cliente.destroy',$cliente->id)}}" method="POST">
-                    {{ csrf_field() }}
+                {{ csrf_field() }}
                     @method('DELETE')
-                    <input class="btn " type="submit" value="eliminar">
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"> Eliminar</i></button>
                 </form>
-            </button>
+            </i>
         </td>
         </tr>
     </tbody>
     @endforeach
     </table>
-    <a href="{{route('cliente.create')}}">Crear</a>
+</div>
 @stop
 
 @section('css')

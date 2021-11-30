@@ -19,12 +19,6 @@ class ClienteController extends Controller
         $clientes = Cliente::all();
         $personas = Persona::get();
         return view('cliente.index', compact('clientes'));
-        
-       /* 
-        $cliente = Cliente::get();
-    	$cliente = Persona::find($id)->clientes;
-    	return view('cliente.index', ['cliente' => $cliente]);
-        */
 
         /*
         //$personas = Persona::all();
@@ -41,8 +35,12 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view("cliente.create");
+    {   
+        //return view("pedido.create");
+        $personas=Persona::all();
+        //$personas=Persona::all();
+        return view('cliente.create', compact('personas'));
+        //return view("cliente.create");
     }
 
     /**
@@ -53,26 +51,19 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {   
-            $persona = new Persona;
-            $persona->nombre=$request->get('nombre');        
-            $persona->apellido=$request->get('apellido');
-            $persona->sexo=$request->get('sexo');
-            $persona->save();
-
-//(Hasta este momento se hace la inserción del nombre y apellido, el id del autor se autogenera,revisar el modelo autor ahí se establece que el campo **protected $primaryKey='id';** es el campo primario se supone que en tu base de datos ese atributo debe ser autoincremental)
-
-              $cliente = new Cliente();
-
-              $cliente->celular=$request->get('celular');  
-              //$cliente->categoria=$request->get('categoria_libro');
-              $cliente->idpersona=$persona->id;
-              $cliente->save();
-
-//(Suponiendo que la tabla Libro es la que va a heredar la clave foránea del autor, date cuenta de lo siguiente. el código **$cliente->idpersona=$persona->id;** dice que va a insertar en el atributo **id_autor** que se encuentra en la tabla Libro(Clave foránea) va a cojer el id que se genero con la primera inserción). así de fácil y sencillo con las inserciones en larvel.
-
-          //return redirect::to('libros');
-          return redirect(route('cliente.index'));
-
+        $cliente = new Cliente();
+        $cliente->celular=$request->get('celular');  
+        $cliente->idpersona=$request->get('idpersona'); 
+        $cliente->save();
+        return redirect(route('cliente.index'));
+        /*
+        $input = $request->all();
+        Cliente::create([
+            'celular' => $input['celular'],
+            'idpersona' => $input['idpersona'],
+        ]);
+        return redirect(route('pedido.index'));
+*/
         /*
         $clientes = new Cliente;
         $clientes->celular = $request->celular;
@@ -108,12 +99,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        
-        $cliente = new Cliente;
-        $clientes = $cliente->find($id);
-        $personas = Persona::get();
-        return view("cliente.index", ['clientes' => $clientes], ['personas' => $personas] );
-        
+        //        
     }
 
     /**
@@ -122,11 +108,13 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Cliente $cliente)
     {
-        $client=Cliente::find($id);
-        $persona=Persona::ordeyBy('id','DESC')->get();
-        return view('cliente.edit')->withCliente($cliente)->with(array('persona' => $persona));
+        
+        $personas=Persona::all();
+        //return view('cliente.edit')->withCliente($cliente)->with(array('persona' => $persona));
+        //return view('cliente.edit',compact('cliente','persona'));
+        return view('cliente.edit', compact('cliente', 'personas'));
     }
 
     /**
@@ -136,9 +124,8 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Cliente $cliente)
     {
-        $cliente=Cliente::find($id);
         $input = $request->all();
         $cliente->celular=$input['celular'];
         $cliente->idpersona=$input['idpersona'];

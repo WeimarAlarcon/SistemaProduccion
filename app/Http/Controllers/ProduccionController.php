@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Producto;
+use App\Models\Produccion;
+use App\Models\Pedido;
+use App\Models\Insumo;
 
-class ProductoController extends Controller
+class ProduccionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,10 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::get();
-        return view("producto.index")->withProductos($productos);
+        $producciones = Produccion::all();
+        $pedidos = Pedido::get();
+        $insumos = Insumo::get();
+        return view('produccion.index', compact('producciones'));
     }
 
     /**
@@ -25,7 +29,9 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view("producto.create");
+        $pedidos = Pedido::all();
+        $insumos = Insumo::all();
+        return view('produccion.create', compact('pedidos', 'insumos'));
     }
 
     /**
@@ -35,14 +41,14 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $input = $request->all();
-        Producto::create([
-            'nombre' => $input['nombre'],
-            'precio_unitario' => $input['precio_unitario'],
+        Produccion::create([
+            'fecha_inicio' => $input['fecha_inicio'],
+            'idpedido' => $input['idpedido'],
+            'idinsumo' => $input['idinsumo'],
         ]);
-       
-        return redirect(route('producto.index'));
+        return redirect(route('produccion.index'));
     }
 
     /**
@@ -62,11 +68,11 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Produccion $produccion)
     {
-        $producto=Producto::find($id);
-        //findOrFail
-        return view('producto.edit')->withProducto($producto);
+        $pedidos = Pedido::all();
+        $insumos = Insumo::all();
+        return view('produccion.edit', compact('produccion', 'pedidos', 'insumos'));
     }
 
     /**
@@ -76,14 +82,14 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Produccion $produccion)
     {
-        $producto=Producto::find($id);
         $input = $request->all();
-        $producto->nombre=$input['nombre'];
-        $producto->precio_unitario=$input['precio_unitario'];
-        $producto->save();
-        return redirect(route('producto.index'));
+        $produccion->fecha_inicio=$input['fecha_inicio'];
+        $produccion->idpedido=$input['idpedido'];
+        $produccion->idinsumo=$input['idinsumo'];
+        $produccion->save();
+        return redirect(route('produccion.index'));
     }
 
     /**
@@ -94,8 +100,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto=Producto::find($id);
-        $producto->delete();
-        return redirect(route('producto.index'));
+        $produccion=Produccion::find($id);
+        $produccion->delete();
+        return redirect(route('produccion.index'));
     }
 }

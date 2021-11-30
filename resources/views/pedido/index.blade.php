@@ -7,6 +7,11 @@
 @stop
 
 @section('content')
+<div class="container">
+    <div>
+        <a href="{{route('pedido.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Crear Pedido</i></button></a>
+        <a href="{{route('detallepedido.index')}}"><button type="button" class="btn btn-primary"><i class="fas">Detalle de Pedido</i></button></a> 
+    </div><br>
     <table class="table">
     <thead>
         <tr>
@@ -15,8 +20,8 @@
         <th scope="col">Lugar de Entrega</th>
         <th scope="col">Cantidad Total</th>
         <th scope="col">celular</th>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
         <th scope="col">Operaciones</th>
         </tr>
     </thead>
@@ -27,24 +32,26 @@
         <td>{{$pedido->fecha_entrega}}</td>
         <td>{{$pedido->lugar_entrega}}</td>
         <td>{{$pedido->cantidad_total}}</td>
-        <td>{{$pedido->cliente_celular}}</td>
-        <td>{{$pedido->persona_n}}</td>
-        <td>{{$pedido->persona_a}}</td>
+        <td>{{$pedido->clientes->celular}}</td>
+        <td>{{$pedido->clientes->personas->nombre}}</td>
+        <td>{{$pedido->clientes->personas->apellido}}</td>
         <td>
-        <button type="button" class="btn btn-outline-success"><a class="btn " href="{{route('pedido.edit',$pedido->id)}}">Editar</a></button>
-                    <button type="button" class="btn btn-outline-warning">
-                    <form action="{{route('pedido.destroy',$pedido->id)}}" method="POST">
-                        {{ csrf_field() }}
-                        @method('DELETE')
-                        <input class="btn " type="submit" value="eliminar">
-                    </form>
-            </button>
+            <a class href="{{route('pedido.edit',$pedido->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
+            <i class="fas ">
+                <form action="{{route('pedido.destroy',$pedido->id)}}" method="POST">
+                {{ csrf_field() }}
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                        <!--<input class="btn " type="submit" value="eliminar">-->
+                </form>
+            </i>
         </td>
         </tr>
     </tbody>
+
     @endforeach
     </table>
-    <a href="{{route('pedido.create')}}">Crear</a>
+</div>
 @stop
 
 @section('css')

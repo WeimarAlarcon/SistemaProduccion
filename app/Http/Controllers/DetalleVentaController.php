@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\DetalleVenta;
+use App\Models\Pedido;
+use App\Models\Venta;
 use App\Models\Producto;
+use App\Models\Cliente;
 
-class ProductoController extends Controller
+class DetalleVentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +18,11 @@ class ProductoController extends Controller
      */
     public function index()
     {
+        $detalleventas = DetalleVenta::all();
+        $ventas = Venta::get();
+        $pedidos = Pedido::get();
         $productos = Producto::get();
-        return view("producto.index")->withProductos($productos);
+        return view('detalleventa.index', compact('detalleventas'));
     }
 
     /**
@@ -25,7 +32,10 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view("producto.create");
+        $ventas=Venta::all();
+        $productos=Producto::all();
+        $pedidos=Pedido::all();
+        return view('detalleventa.create', compact('ventas', 'productos', 'pedidos'));
     }
 
     /**
@@ -35,14 +45,15 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $input = $request->all();
-        Producto::create([
-            'nombre' => $input['nombre'],
-            'precio_unitario' => $input['precio_unitario'],
+        DetalleVenta::create([
+            'idpedido' => $input['idpedido'],
+            'precio_total' => $input['precio_total'],
+            'idventa' => $input['idventa'],
+            'idproducto' => $input['idproducto'],
         ]);
-       
-        return redirect(route('producto.index'));
+        return redirect(route('detalleventa.index'));
     }
 
     /**
@@ -64,9 +75,11 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        $producto=Producto::find($id);
-        //findOrFail
-        return view('producto.edit')->withProducto($producto);
+        $detalleventa=DetalleVenta::findOrFail($id);
+        $productos=Producto::all();
+        $pedidos=Pedido::all();
+        $ventas=Venta::all();
+        return view('detalleventa.edit', compact('detalleventa','productos', 'pedidos', 'ventas'));
     }
 
     /**
@@ -78,12 +91,14 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $producto=Producto::find($id);
+        $detalleventa=DetalleVenta::findOrFail($id);
         $input = $request->all();
-        $producto->nombre=$input['nombre'];
-        $producto->precio_unitario=$input['precio_unitario'];
-        $producto->save();
-        return redirect(route('producto.index'));
+        $detalleventa->idpedido=$input['idpedido'];
+        $detalleventa->precio_total=$input['precio_total'];
+        $detalleventa->idventa=$input['idventa'];
+        $detalleventa->idproducto=$input['idproducto'];
+        $detalleventa->save();
+        return redirect(route('detalleventa.index'));
     }
 
     /**
@@ -94,8 +109,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto=Producto::find($id);
-        $producto->delete();
-        return redirect(route('producto.index'));
+        $detalleventa=DetalleVenta::find($id);
+        $detalleventa->delete();
+        return redirect(route('detalleventa.index'));
     }
 }

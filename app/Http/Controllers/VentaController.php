@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Producto;
+use App\Models\Venta;
+use App\Models\Cliente;
+use App\Models\Persona;
 
-class ProductoController extends Controller
+class VentaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,10 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::get();
-        return view("producto.index")->withProductos($productos);
+        $ventas = Venta::all();
+        $personas = Persona::all();
+        $clientes = Cliente::get();
+        return view('venta.index', compact('ventas'));
     }
 
     /**
@@ -25,7 +29,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view("producto.create");
+        $clientes=Cliente::all();
+        return view('venta.create', compact('clientes'));
     }
 
     /**
@@ -35,14 +40,14 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $input = $request->all();
-        Producto::create([
-            'nombre' => $input['nombre'],
-            'precio_unitario' => $input['precio_unitario'],
+        Venta::create([
+            'codigo' => $input['codigo'],
+            'fecha' => $input['fecha'],
+            'idcliente' => $input['idcliente'],
         ]);
-       
-        return redirect(route('producto.index'));
+        return redirect(route('venta.index'));
     }
 
     /**
@@ -64,12 +69,15 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        $producto=Producto::find($id);
+        $clientes=Cliente::all();
+        //return view('venta.edit', compact('venta', 'clientes'));
+        $venta=Venta::findOrFail($id);
         //findOrFail
-        return view('producto.edit')->withProducto($producto);
+        return view('venta.edit', compact('venta', 'clientes'));
     }
 
     /**
+     * 
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -78,12 +86,13 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $producto=Producto::find($id);
+        $venta=Venta::findOrFail($id);
         $input = $request->all();
-        $producto->nombre=$input['nombre'];
-        $producto->precio_unitario=$input['precio_unitario'];
-        $producto->save();
-        return redirect(route('producto.index'));
+        $venta->codigo=$input['codigo'];
+        $venta->fecha=$input['fecha'];
+        $venta->idcliente=$input['idcliente'];
+        $venta->save();
+        return redirect(route('venta.index'));
     }
 
     /**
@@ -94,8 +103,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto=Producto::find($id);
-        $producto->delete();
-        return redirect(route('producto.index'));
+        $venta=Venta::find($id);
+        $venta->delete();
+        return redirect(route('venta.index'));
     }
 }

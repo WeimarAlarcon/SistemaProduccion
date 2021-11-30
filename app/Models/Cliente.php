@@ -18,9 +18,18 @@ class Cliente extends Model
         'idpersona',
     ];
 
+    public function pedidos()
+    {
+        //return $this->hasMany('cliente', 'idpersona');
+        return $this->hasMany(Pedido::class, 'id');
+    }
     public function personas()
     {
         //return $this->BelongsTo('persona', 'idpersona');
         return $this->BelongsTo(Persona::class, 'idpersona');
+    }
+    public function ventas()
+    {
+        return $this->hasMany(Venta::class, 'id');
     }
 }

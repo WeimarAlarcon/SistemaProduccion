@@ -22,4 +22,10 @@ class Producto extends Model
         'nombre',
         'precio_unitario',
     ];
+    
+    public function detallepedidos()
+    {
+        return $this->hasMany(DetallePedido::class, 'id');
+    }
+    
 }

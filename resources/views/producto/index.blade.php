@@ -7,7 +7,11 @@
 @stop
 
 @section('content')
-
+<div class="container">
+    <div>
+        <a href="{{route('producto.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nuevo Producto</i></button></a>
+    </div>
+    <br>
     <table class="table">
 		<thead class="thead-dark">
 					<th scope="col">id</th>
@@ -20,20 +24,20 @@
                 <td>{{$producto->id}}</td>
                 <td>{{$producto->nombre}}</td>
                 <td>{{$producto->precio_unitario}}</td>
-                <td><button type="button" class="btn btn-outline-success"><a class="btn " href="{{route('producto.edit',$producto->id)}}">Editar</a></button>
-                    <button type="button" class="btn btn-outline-warning">
-                    <form action="{{route('producto.destroy',$producto->id)}}" method="POST">
+                <td>
+                    <a class href="{{route('producto.edit',$producto->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
+                        <i class="fas ">
+                        <form action="{{route('producto.destroy',$producto->id)}}" method="POST">
                         {{ csrf_field() }}
-                        @method('DELETE')
-                        <input class="btn " type="submit" value="eliminar">
-                    </form>
-                    </button>
+                            @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                        </form>
+                    </i>
                 </td>
             </tr>
         @endforeach
 	</table>
-    <button type="button" class="btn btn-outline-info"><a href="{{route('producto.create')}}">Crear</a></button>
-    
+</div>
 @stop
 
 @section('css')

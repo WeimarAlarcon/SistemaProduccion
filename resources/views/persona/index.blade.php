@@ -7,8 +7,9 @@
 @stop
 
 @section('content')
+<div class="container">
     <div>
-    <button type="submit" class="btn btn-dark"><a href="{{route('persona.create')}}">Registrar Personas</a></button>
+    <a href="{{route('persona.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Registrar Persona</i></button></a>
     </div>
     <br>
     <div>
@@ -30,20 +31,20 @@
         <td>{{$persona->apellido}}</td>
         <td>{{$persona->sexo}}</td>
         <td>
-            <button type="button" class="btn btn-outline-success"><a class="btn " href="{{route('persona.edit',$persona->id)}}">Editar</a></button>
-                    <button type="button" class="btn btn-outline-warning">
-                    <form action="{{route('persona.destroy',$persona->id)}}" method="POST">
-                        {{ csrf_field() }}
-                        @method('DELETE')
-                        <input class="btn " type="submit" value="eliminar">
-                    </form>
-            </button>
+            <a class href="{{route('persona.edit',$persona->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
+            <i class="fas ">
+                <form action="{{route('persona.destroy',$persona->id)}}" method="POST">
+                {{ csrf_field() }}
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                </form>
+            </i>
         </td>
         </tr>
     </tbody>
     @endforeach
     </table>
-    </div>
+</div>
 @stop
 
 @section('css')

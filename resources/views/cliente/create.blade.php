@@ -14,29 +14,15 @@
         <label for="celular" class="form-label">Celular</label>
         <input type="number" name="celular" class="form-control">
     </div>
-
-    <div class="form-group">
-        <label for="nombre">Nombre Persona</label>
-        <input type="text" class="form-control" name="nombre">
+    <div class="mb-3">
+        <label for="idpersona" class="form-label">Cliente</label>
     </div>
-    <div class="form-group">
-        <label for="apellido">Apellido</label>
-        <input type="text" class="form-control" name="apellido">
-    </div>
-    <div>
-    <label for="sexo">Sexo</label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" name="sexo" type="checkbox" value="Masculino" id="flexCheckDefault">
-        <label class="form-check-label" for="sexo">
-            Masculino
-        </label>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" name="sexo" type="checkbox" value="Femenino" id="flexCheckChecked">
-        <label class="form-check-label" for="sexo">
-            Femenino
-        </label>
+    <div class="mb-3">
+        <select name="idpersona" id="idcliente">
+            @foreach($personas as $persona)
+            <option value="{{$persona->id}}">{{$persona->nombre}} {{$persona->apellido}}</option>
+            @endforeach
+        </select>
     </div>
     <button type="submit" class="btn btn-primary">Registrar</button>
     </form>

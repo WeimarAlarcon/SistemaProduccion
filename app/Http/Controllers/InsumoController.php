@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Producto;
+use App\Models\Insumo;
+use App\Models\Distribuidora;
 
-class ProductoController extends Controller
+class InsumoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos = Producto::get();
-        return view("producto.index")->withProductos($productos);
+        $insumos = Insumo::all();
+        $distribuidoras = Distribuidora::all();
+        return view("insumo.index", compact('insumos'));
     }
 
     /**
@@ -25,7 +27,8 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view("producto.create");
+        $distribuidoras=Distribuidora::all();
+        return view('insumo.create', compact('distribuidoras'));
     }
 
     /**
@@ -35,14 +38,14 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
+    {
         $input = $request->all();
-        Producto::create([
+        Insumo::create([
+            'codigo' => $input['codigo'],
             'nombre' => $input['nombre'],
-            'precio_unitario' => $input['precio_unitario'],
+            'iddistribuidora' => $input['iddistribuidora'],
         ]);
-       
-        return redirect(route('producto.index'));
+        return redirect(route('insumo.index'));
     }
 
     /**
@@ -62,11 +65,10 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Insumo $insumo)
     {
-        $producto=Producto::find($id);
-        //findOrFail
-        return view('producto.edit')->withProducto($producto);
+        $distribuidoras=Distribuidora::all();
+        return view('insumo.edit', compact('insumo','distribuidoras'));
     }
 
     /**
@@ -76,14 +78,14 @@ class ProductoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Insumo $insumo)
     {
-        $producto=Producto::find($id);
         $input = $request->all();
-        $producto->nombre=$input['nombre'];
-        $producto->precio_unitario=$input['precio_unitario'];
-        $producto->save();
-        return redirect(route('producto.index'));
+        $insumo->codigo=$input['codigo'];
+        $insumo->nombre=$input['nombre'];
+        $insumo->iddistribuidora=$input['iddistribuidora'];
+        $insumo->save();
+        return redirect(route('insumo.index'));
     }
 
     /**
@@ -94,8 +96,8 @@ class ProductoController extends Controller
      */
     public function destroy($id)
     {
-        $producto=Producto::find($id);
-        $producto->delete();
-        return redirect(route('producto.index'));
+        $insumo=Insumo::find($id);
+        $insumo->delete();
+        return redirect(route('insumo.index'));
     }
 }

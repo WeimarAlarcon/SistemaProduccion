@@ -247,6 +247,7 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+/*
         [
             'text'        => 'pages',
             'url'         => 'admin/pages',
@@ -254,10 +255,11 @@ return [
             'label'       => '',
             'label_color' => 'success',
         ],
+*/
         [
             'text'        => 'Personas',
             'url'         => 'persona',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-user',
             'label_color' => 'success',
         ],
         [
@@ -273,9 +275,27 @@ return [
             'label_color' => 'success',
         ],
         [
+            'text'        => 'Ventas',
+            'url'         => 'venta',
+            'icon'        => 'fas fa-shopping-cart',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Insumos',
+            'url'         => 'insumo',
+            'icon'        => 'fab fa-buffer',
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'Productos',
             'url'         => 'producto',
             'icon'        => 'fas fa-tshirt',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Produccion',
+            'url'         => 'produccion',
+            'icon'        => 'fas fa-cogs',
             'label_color' => 'success',
         ],
         ['header' => 'Configuración de la Cuenta'],
@@ -284,11 +304,14 @@ return [
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
+        /*
         [
             'text' => 'Cambiar Contraseña',
             'url'  => 'user/profile/update-password-form',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        */
+        /*
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -327,6 +350,8 @@ return [
                 ],
             ],
         ],
+        */
+        /*
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -343,6 +368,7 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
+        */
     ],
 
     /*

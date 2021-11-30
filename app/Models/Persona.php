@@ -19,7 +19,6 @@ class Persona extends Model
     ];
     public function clientes()
     {
-        //return $this->hasMany('cliente', 'idpersona');
         return $this->hasMany(Cliente::class, 'id');
     }
 }
