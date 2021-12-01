@@ -10,39 +10,38 @@
 <div class="container">
     <div>
     <a href="{{route('persona.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Registrar Persona</i></button></a>
+    <a href="{{route('cliente.index')}}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-left"> Volver</i></button></a>
     </div>
     <br>
     <div>
-    <table class="table">
-    <thead>
+    <table class="table table-ligth table-striped">
+        <thead class="bg-info">
+            <tr>
+            <th scope="col">id</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Operaciones</th>
+            </tr>
+        </thead>
+        @foreach($personas as $persona)
         <tr>
-        <th scope="col">id</th>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Sexo</th>
-        <th scope="col">Operaciones</th>
+            <th scope="row">{{$persona->id}}</th>
+            <td>{{$persona->nombre}}</td>
+            <td>{{$persona->apellido}}</td>
+            <td>{{$persona->sexo}}</td>
+            <td>
+                <a class href="{{route('persona.edit',$persona->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
+                <i class="fas ">
+                    <form action="{{route('persona.destroy',$persona->id)}}" method="POST">
+                    {{ csrf_field() }}
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"> Eliminar</i></button>
+                    </form>
+                </i>
+            </td>
         </tr>
-    </thead>
-    @foreach($personas as $persona)
-    <tbody>
-        <tr>
-        <th scope="row">{{$persona->id}}</th>
-        <td>{{$persona->nombre}}</td>
-        <td>{{$persona->apellido}}</td>
-        <td>{{$persona->sexo}}</td>
-        <td>
-            <a class href="{{route('persona.edit',$persona->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
-            <i class="fas ">
-                <form action="{{route('persona.destroy',$persona->id)}}" method="POST">
-                {{ csrf_field() }}
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"> Eliminar</i></button>
-                </form>
-            </i>
-        </td>
-        </tr>
-    </tbody>
-    @endforeach
+        @endforeach
     </table>
 </div>
 @stop

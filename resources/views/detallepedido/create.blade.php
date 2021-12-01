@@ -15,27 +15,27 @@
         {{ csrf_field() }}
     <div class="mb-3">
         <label for="descripcion" class="form-label">Descripcion</label>
-        <input type="text" name="descripcion" class="form-control" aria-describedby="emailHelp">
+        <input type="text" name="descripcion" class="form-control" required>
     </div>
     <div class="mb-3">
         <label for="talla" class="form-label">Talla</label>
-        <input type="text" name="talla" class="form-control" >
+        <input type="text" name="talla" class="form-control" required>
     </div>
     <div class="mb-3">
         <label for="color" class="form-label">Color</label>
-        <input type="text" name="color" class="form-control" >
+        <input type="text" name="color" class="form-control" required>
     </div>
     <div class="mb-3">
         <label for="cantidad" class="form-label">Cantidad</label>
-        <input type="number" name="cantidad" class="form-control">
+        <input type="number" name="cantidad" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label for="idpedido" class="form-label">Pedido</label>
+        <label for="idpedido" class="form-label">Cantidad Total del Pedido del Cliente</label>
     </div>
     <div class="mb-3">
         <select name="idpedido" id="idpedido">
             @foreach($pedidos as $pedido)
-            <option value="{{$pedido->id}}">{{$pedido->id}} {{$pedido->clientes->personas->nombre}} {{$pedido->cantidad_total}}</option>
+            <option value="{{$pedido->id}}">Cant. total:{{$pedido->cantidad_total}} &nbsp Cliente:{{$pedido->clientes->personas->nombre}} </option>
             @endforeach
         </select>
     </div>

@@ -12,11 +12,12 @@
         <a href="{{route('detalleventa.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Crear Detalle de Venta</i></button></a>
         <a href="{{route('venta.index')}}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-left"> Volver</i></button></a>
     </div><br>
-    <table class="table">
-    <thead>
+    <table class="table table-ligth table-striped">
+    <thead class="bg-info">
         <tr>
         <th scope="col">id</th>
         <th scope="col">Fecha de Venta Venta</th>
+        <th scope="col">Producto</th>
         <th scope="col">Cantidad Total P.</th>
         <th scope="col">Precio de Producto</th>
         <th scope="col">Precio Total</th>
@@ -24,10 +25,10 @@
         </tr>
     </thead>
     @foreach($detalleventas as $detalleventa)
-    <tbody>
-        <tr>
+    <tr>
         <th scope="row">{{$detalleventa->id}}</th>
         <td>{{$detalleventa->ventas->fecha}}</td>
+        <td>{{$detalleventa->productos->nombre}}</td>
         <td>{{$detalleventa->pedidos->cantidad_total}}</td>
         <td>{{$detalleventa->productos->precio_unitario}}</td>
         <td>{{$detalleventa->precio_total}}</td>
@@ -41,8 +42,7 @@
                 </form>
             </i>
         </td>
-        </tr>
-    </tbody>
+    </tr>
     @endforeach
     </table>
 </div>

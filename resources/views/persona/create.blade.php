@@ -11,11 +11,11 @@
         {{ csrf_field() }}
     <div class="mb-3">
         <label for="nombre" class="form-label">Nombres</label>
-        <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="text" name="nombre" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
     </div>
     <div class="mb-3">
         <label for="apellido" class="form-label">Apellidos</label>
-        <input type="text" name="apellido" class="form-control" id="exampleInputPassword1">
+        <input type="text" name="apellido" class="form-control" id="exampleInputPassword1" required>
     </div>
     <div>
         <label for="sexo">Sexo</label>

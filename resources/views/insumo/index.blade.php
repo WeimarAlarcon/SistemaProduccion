@@ -12,8 +12,8 @@
         <a href="{{route('insumo.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nuevo Insumo</i></button></a>
     </div>
     <br>
-    <table class="table">
-    <thead>
+    <table class="table table-ligth table-striped">
+    <thead class="bg-info">
         <tr>
         <th scope="col">id</th>
         <th scope="col">Codigo</th>
@@ -24,8 +24,7 @@
         </tr>
     </thead>
     @foreach($insumos as $insumo)
-    <tbody>
-        <tr>
+    <tr>
         <th scope="row">{{$insumo->id}}</th>
         <td>{{$insumo->codigo}}</td>
         <td>{{$insumo->nombre}}</td>
@@ -41,8 +40,7 @@
                 </form>
             </i>
         </td>
-        </tr>
-    </tbody>
+    </tr>
     @endforeach
     </table>
 </div>

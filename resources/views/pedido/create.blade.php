@@ -27,7 +27,7 @@
     <div class="mb-3">
         <select name="idcliente" id="idcliente">
             @foreach($clientes as $cliente)
-            <option value="{{$cliente->id}}">{{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+            <option value="{{$cliente->id}}">Cliente:{{$cliente->personas->nombre}} {{$cliente->personas->apellido}} &nbsp Cel:{{$cliente->celular}}</option>
             @endforeach
         </select>
     </div>

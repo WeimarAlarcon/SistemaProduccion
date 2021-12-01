@@ -25,9 +25,9 @@
         <select name="idcliente" id="idcliente">
             @foreach($clientes as $cliente)
             @if ($cliente->id == $venta->idcliente)
-                <option value="{{$cliente->id}}" selected>{{$cliente->id}} {{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+                <option value="{{$cliente->id}}" selected>{{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
             @else 
-                <option value="{{$cliente->id}}" >{{$cliente->id}} {{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+                <option value="{{$cliente->id}}" >{{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
             @endif
             @endforeach
         </select>

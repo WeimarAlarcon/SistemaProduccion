@@ -12,8 +12,8 @@
         <a href="{{route('producto.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nuevo Producto</i></button></a>
     </div>
     <br>
-    <table class="table">
-		<thead class="thead-dark">
+    <table class="table table-ligth table-striped">
+		<thead class="bg-info">
 					<th scope="col">id</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Precio Unitario(BS)</th>

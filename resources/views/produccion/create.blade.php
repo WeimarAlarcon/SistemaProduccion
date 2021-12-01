@@ -14,12 +14,12 @@
         <input type="date" name="fecha_inicio" class="form-control">
     </div>
     <div class="mb-3">
-        <label for="idpedido" class="form-label">Nro de Pedido</label>
+        <label for="idpedido" class="form-label">Cantidad de Pedido del Cliente</label>
     </div>
     <div class="mb-3">
         <select name="idpedido" id="idpedido">
             @foreach($pedidos as $pedido)
-            <option value="{{$pedido->id}}"> id:{{$pedido->id}} {{$pedido->cantidad_total}} </option>
+            <option value="{{$pedido->id}}"> Cant.:{{$pedido->cantidad_total}} &nbsp Cliente:{{$pedido->clientes->personas->nombre}}{{$pedido->clientes->personas->apellido}} </option>
             @endforeach
         </select>
     </div>
@@ -30,7 +30,7 @@
     <div class="mb-3">
         <select name="idinsumo" id="idinsumo">
             @foreach($insumos as $insumo)
-            <option value="{{$insumo->id}}">id:{{$insumo->id}} {{$insumo->nombre}} </option>
+            <option value="{{$insumo->id}}">{{$insumo->nombre}} </option>
             @endforeach
         </select>
     </div>

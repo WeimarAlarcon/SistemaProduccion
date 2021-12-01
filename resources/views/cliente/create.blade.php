@@ -12,10 +12,10 @@
 
     <div class="mb-3">
         <label for="celular" class="form-label">Celular</label>
-        <input type="number" name="celular" class="form-control">
+        <input type="number" name="celular" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label for="idpersona" class="form-label">Cliente</label>
+        <label for="idpersona" class="form-label">Persona</label>
     </div>
     <div class="mb-3">
         <select name="idpersona" id="idcliente">

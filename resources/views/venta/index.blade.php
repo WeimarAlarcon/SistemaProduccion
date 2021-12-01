@@ -12,8 +12,8 @@
         <a href="{{route('venta.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Crear Venta</i></button></a>
         <a href="{{route('detalleventa.index')}}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right"> Detalle de Venta</i></button></a>
     </div><br>
-    <table class="table">
-    <thead>
+    <table class="table table-ligth table-striped">
+    <thead class="bg-info">
         <tr>
         <th scope="col">id</th>
         <th scope="col">Codigo</th>
@@ -25,8 +25,7 @@
         </tr>
     </thead>
     @foreach($ventas as $venta)
-    <tbody>
-        <tr>
+    <tr>
         <th scope="row">{{$venta->id}}</th>
         <td>{{$venta->codigo}}</td>
         <td>{{$venta->fecha}}</td>
@@ -43,9 +42,7 @@
                 </form>
             </i>
         </td>
-        </tr>
-    </tbody>
-
+    </tr>
     @endforeach
     </table>
 </div>

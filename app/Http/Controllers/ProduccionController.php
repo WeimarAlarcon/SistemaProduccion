@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produccion;
 use App\Models\Pedido;
+use App\Models\DetallePedido;
 use App\Models\Insumo;
 
 class ProduccionController extends Controller
@@ -18,6 +19,7 @@ class ProduccionController extends Controller
     {
         $producciones = Produccion::all();
         $pedidos = Pedido::get();
+        $detallepedidos = DetallePedido::get();
         $insumos = Insumo::get();
         return view('produccion.index', compact('producciones'));
     }

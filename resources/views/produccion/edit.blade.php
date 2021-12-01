@@ -15,15 +15,15 @@
         <input type="date" name="fecha_inicio" class="form-control" id="" value="{{$produccion->fecha_inicio}}">
     </div>
     <div class="mb-3">
-        <label for="idpedido" class="form-label">Nro de pedido</label>
+        <label for="idpedido" class="form-label">Cantidad de pedido del Cliente</label>
     </div>
     <div class="mb-3">
         <select name="idpedido" id="idpedido">
             @foreach($pedidos as $pedido)
             @if ($pedido->id == $produccion->idpedido)
-                <option value="{{$pedido->id}}" selected>{{$pedido->cantidad_total}}</option>
+                <option value="{{$pedido->id}}" selected>Cant.:{{$pedido->cantidad_total}} &nbsp Cliente:{{$pedido->clientes->personas->nombre}}{{$pedido->clientes->personas->apellido}}</option>
             @else 
-                <option value="{{$pedido->id}}" >{{$pedido->cantidad_total}}</option>
+                <option value="{{$pedido->id}}" >Cant.:{{$pedido->cantidad_total}} &nbsp Cliente:{{$pedido->clientes->personas->nombre}}{{$pedido->clientes->personas->apellido}}</option>
             @endif
             @endforeach
         </select>
