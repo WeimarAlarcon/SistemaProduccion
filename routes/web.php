@@ -22,7 +22,11 @@ use App\Http\Controllers\ProduccionController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
+Route::get('/', function () {
+    return view('welcome');
+});
+*/
 Route::get('/', function () {
     return view('welcome');
 });
@@ -40,3 +44,4 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('venta',VentaControlle
 Route::middleware(['auth:sanctum', 'verified'])->resource('detalleventa',DetalleVentaController::class);
 Route::middleware(['auth:sanctum', 'verified'])->resource('insumo',InsumoController::class);
 Route::middleware(['auth:sanctum', 'verified'])->resource('produccion',ProduccionController::class);
+

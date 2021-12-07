@@ -8,9 +8,6 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-3"></div>
-    <div class="col">
     <form action="{{route('detallepedido.store')}}" method="POST">
         {{ csrf_field() }}
     <div class="mb-3">
@@ -51,10 +48,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
-
-    </div>
-    <div class="col-3"></div>
-  </div>
 </div>
 @stop
 

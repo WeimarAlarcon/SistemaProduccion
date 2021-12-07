@@ -7,6 +7,8 @@
 @stop
 
 @section('content')
+<div class="mb-3">
+    
     <form action="{{route('pedido.store')}}" method="POST">
         {{ csrf_field() }}
     <div class="mb-3">

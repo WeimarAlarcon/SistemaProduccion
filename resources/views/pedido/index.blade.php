@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-<div class="container">
     <div>
         <a href="{{route('pedido.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Crear Pedido</i></button></a>
         <a href="{{route('detallepedido.index')}}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right"> Detalle de Pedido</i></button></a> 
@@ -48,7 +47,6 @@
     </tr>
     @endforeach
     </table>
-</div>
 @stop
 
 @section('css')

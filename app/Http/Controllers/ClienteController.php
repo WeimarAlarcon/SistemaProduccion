@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Persona;
-use DB;
+use Illuminate\Support\Facades\DB;
+
 
 class ClienteController extends Controller
 {

@@ -52,7 +52,6 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        
         $input = $request->all();
         Pedido::create([
             'lugar_entrega' => $input['lugar_entrega'],
