@@ -16,6 +16,8 @@ class Cliente extends Model
         'id',
         'celular',
         'idpersona',
+        'nombre',
+        'apellido',
     ];
 
     public function pedidos()

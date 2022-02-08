@@ -7,15 +7,14 @@ use App\Models\Cliente;
 use App\Models\Persona;
 use Illuminate\Support\Facades\DB;
 
-
-class ClienteController extends Controller
+class ListaClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Cliente $cliente)
     {
         $texto=trim($request->get('texto'));
         //$clientes = Cliente::all();
@@ -27,7 +26,7 @@ class ClienteController extends Controller
         ->orWhere('celular','LIKE','%'.$texto.'%')
         ->orderBy('id','asc')
         ->paginate(50);
-        return view('cliente.index', compact('clientes','texto', 'personas'));
+        return view('listacliente.index', compact('clientes','texto', 'personas'));
     }
 
     /**
@@ -36,9 +35,8 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-        $personas=Persona::all();
-        return view('cliente.create', compact('personas'));
+    {
+        //
     }
 
     /**
@@ -48,14 +46,8 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   
-        $cliente = new Cliente();
-        $cliente->celular=$request->get('celular');  
-        $cliente->idpersona=$request->get('idpersona');
-        $cliente->nombre=$request->get('nombre');  
-        $cliente->apellido=$request->get('apellido'); 
-        $cliente->save();
-        return redirect(route('cliente.index'));
+    {
+        //
     }
 
     /**
@@ -66,7 +58,7 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        //        
+        //
     }
 
     /**
@@ -75,11 +67,10 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
-        
         $personas=Persona::all();
-        return view('cliente.edit', compact('cliente', 'personas'));
+        return view('listacliente.edit', compact('cliente', 'personas'));
     }
 
     /**
@@ -89,7 +80,7 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
         $input = $request->all();
         $cliente->celular=$input['celular'];
@@ -97,7 +88,7 @@ class ClienteController extends Controller
         $cliente->nombre=$input['nombre'];
         $cliente->apellido=$input['apellido'];
         $cliente->save();
-        return redirect(route('cliente.index'));
+        return redirect(route('listacliente.index'));
     }
 
     /**
@@ -108,8 +99,6 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente=Cliente::find($id);
-        $cliente->delete();
-        return redirect(route('cliente.index'));
+        //
     }
 }

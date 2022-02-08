@@ -27,12 +27,17 @@
         <input type="number" name="cantidad" class="form-control" required>
     </div>
     <div class="mb-3">
-        <label for="idpedido" class="form-label">Cantidad Total del Pedido del Cliente</label>
+        <label for="idpedido" class="form-label">Pedido</label>
     </div>
     <div class="mb-3">
-        <select name="idpedido" id="idpedido">
+        <select name="idpedido" id="idpedido" class="form-control">
+            <option value=""></option>
             @foreach($pedidos as $pedido)
-            <option value="{{$pedido->id}}">Cant. total:{{$pedido->cantidad_total}} &nbsp Cliente:{{$pedido->clientes->personas->nombre}} </option>
+            @foreach($clientes as $cliente)
+            @if ($cliente->id == $pedido->idcliente)
+            <option value="{{$pedido->id}}">{{$pedido->id}} {{$cliente->nombre}} {{$cliente->apellido}}</option>
+            @endif
+            @endforeach
             @endforeach
         </select>
     </div>
@@ -40,7 +45,8 @@
         <label for="idproducto" class="form-label">Producto</label>
     </div>
     <div class="mb-3">
-        <select name="idproducto" id="idproducto">
+        <select name="idproducto" id="idproducto" class="form-control">
+            <option value=""></option>
             @foreach($productos as $producto)
             <option value="{{$producto->id}}">{{$producto->nombre}}</option>
             @endforeach

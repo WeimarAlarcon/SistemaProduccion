@@ -22,7 +22,7 @@
         <label for="iddistribuidora" class="form-label">Cliente</label>
     </div>
     <div class="mb-3">
-        <select name="iddistribuidora" id="iddistribuidora">
+        <select name="iddistribuidora" id="iddistribuidora" class="form-control">
             @foreach($distribuidoras as $distribuidora)
             @if ($distribuidora->id == $insumo->iddistribuidora)
                 <option value="{{$distribuidora->id}}" selected>{{$distribuidora->nombre}}</option>

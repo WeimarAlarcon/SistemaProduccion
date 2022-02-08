@@ -38,8 +38,6 @@ class PersonaController extends Controller
     {
         $input = $request->all();
         Persona::create([
-            'nombre' => $input['nombre'],
-            'apellido' => $input['apellido'],
             'sexo' => $input['sexo'],
         ]);
        
@@ -80,8 +78,6 @@ class PersonaController extends Controller
     {
         $persona=Persona::find($id);
         $input = $request->all();
-        $persona->nombre=$input['nombre'];
-        $persona->apellido=$input['apellido'];
         $persona->sexo=$input['sexo'];
         $persona->save();
         return redirect(route('persona.index'));

@@ -12,6 +12,9 @@ use App\Http\Controllers\InsumoController;
 use App\Http\Controllers\ProduccionController;
 
 
+use App\Http\Controllers\ListaClienteController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,7 +31,7 @@ Route::get('/', function () {
 });
 */
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -45,3 +48,9 @@ Route::middleware(['auth:sanctum', 'verified'])->resource('detalleventa',Detalle
 Route::middleware(['auth:sanctum', 'verified'])->resource('insumo',InsumoController::class);
 Route::middleware(['auth:sanctum', 'verified'])->resource('produccion',ProduccionController::class);
 
+Route::middleware(['auth:sanctum', 'verified'])->resource('listacliente',ListaClienteController::class);
+
+
+//show 
+
+//Route::get('/pedido', [App\Http\Controllers\PedidoController::class, 'show'])->name('pedido.show');

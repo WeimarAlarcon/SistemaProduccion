@@ -14,7 +14,7 @@
         <label for="idventa" class="form-label">Codigo Venta</label>
     </div>
     <div class="mb-3">
-        <select name="idventa" id="idventa">
+        <select name="idventa" id="idventa" class="form-control">
             @foreach($ventas as $venta)
             @if ($venta->id == $detalleventa->idpedido)
                 <option value="{{$venta->id}}" selected>{{$venta->codigo}}</option>
@@ -25,10 +25,10 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="idpedido" class="form-label">Cantidad</label>
+        <label for="idpedido" class="form-label" class="form-control">Cantidad</label>
     </div>
     <div class="mb-3">
-        <select name="idpedido" id="idpedido">
+        <select name="idpedido" id="idpedido" class="form-control">
             @foreach($pedidos as $pedido)
             @if ($pedido->id == $detalleventa->idpedido)
                 <option value="{{$pedido->id}}" selected> {{$pedido->cantidad_total}}</option>
@@ -39,10 +39,10 @@
         </select>
     </div>
     <div class="mb-3">
-        <label for="idproducto" class="form-label">Precio Unitario</label>
+        <label for="idproducto" class="form-label" class="form-control">Precio Unitario</label>
     </div>
     <div class="mb-3">
-        <select name="idproducto" id="idproducto">
+        <select name="idproducto" id="idproducto" class="form-control">
             @foreach($productos as $producto) 
             @if ($producto->id == $detalleventa->idproducto)
                 <option value="{{$producto->id}}" selected>{{$producto->precio_unitario}}</option>

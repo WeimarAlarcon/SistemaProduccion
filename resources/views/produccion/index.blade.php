@@ -7,16 +7,15 @@
 @stop
 
 @section('content')
-<div class="container">
     <div>
         <a href="{{route('produccion.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nueva Produccion</i></button></a>
     </div><br>
     <table class="table table-ligth table-striped">
-        <thead class="bg-info">
+        <thead class="bg-primary">
             <tr>
             <th scope="col">id</th>
             <th scope="col">Fecha Inicio</th>
-            <th scope="col">Cantidad</th>
+            <th scope="col">Cantidad Total</th>
             <th scope="col">Cliente</th>
             <th scope="col">Material de Tela</th>
             <th scope="col">Operaciones</th>
@@ -27,7 +26,7 @@
             <th scope="row">{{$produccion->id}}</th>
             <td>{{$produccion->fecha_inicio}}</td>
             <td>{{$produccion->pedidos->cantidad_total}}</td>
-            <td>{{$produccion->pedidos->clientes->personas->nombre}} {{$produccion->pedidos->clientes->personas->apellido}}</td>
+            <td>{{$produccion->pedidos->clientes->nombre}} {{$produccion->pedidos->clientes->apellido}}</td>
             <td>{{$produccion->insumos->nombre}}</td>
             <td>
                 <a class href="{{route('produccion.edit',$produccion->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
@@ -42,7 +41,7 @@
         </tr>
         @endforeach
     </table>
-</div>
+
 @stop
 
 @section('css')

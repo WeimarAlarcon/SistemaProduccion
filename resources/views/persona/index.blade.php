@@ -10,7 +10,6 @@
 <div class="container">
     <div>
     <a href="{{route('persona.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Registrar Persona</i></button></a>
-    <a href="{{route('cliente.index')}}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-left"> Volver</i></button></a>
     </div>
     <br>
     <div>
@@ -18,8 +17,6 @@
         <thead class="bg-info">
             <tr>
             <th scope="col">id</th>
-            <th scope="col">Nombres</th>
-            <th scope="col">Apellidos</th>
             <th scope="col">Sexo</th>
             <th scope="col">Operaciones</th>
             </tr>
@@ -27,8 +24,6 @@
         @foreach($personas as $persona)
         <tr>
             <th scope="row">{{$persona->id}}</th>
-            <td>{{$persona->nombre}}</td>
-            <td>{{$persona->apellido}}</td>
             <td>{{$persona->sexo}}</td>
             <td>
                 <a class href="{{route('persona.edit',$persona->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>

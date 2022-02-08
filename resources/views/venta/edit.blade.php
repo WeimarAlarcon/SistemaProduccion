@@ -22,12 +22,12 @@
         <label for="idcliente" class="form-label">Cliente</label>
     </div>
     <div class="mb-3">
-        <select name="idcliente" id="idcliente">
+        <select name="idcliente" id="idcliente" class="form-control">
             @foreach($clientes as $cliente)
             @if ($cliente->id == $venta->idcliente)
-                <option value="{{$cliente->id}}" selected>{{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+                <option value="{{$cliente->id}}" selected>{{$cliente->nombre}} {{$cliente->apellido}}</option>
             @else 
-                <option value="{{$cliente->id}}" >{{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+                <option value="{{$cliente->id}}" >{{$cliente->nombre}} {{$cliente->apellido}}</option>
             @endif
             @endforeach
         </select>

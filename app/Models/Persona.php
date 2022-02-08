@@ -13,8 +13,6 @@ class Persona extends Model
     protected $primaryKey='id';
     protected $fillable = [
         'id',
-        'nombre',
-        'apellido',
         'sexo',
     ];
     public function clientes()

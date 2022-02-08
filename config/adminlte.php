@@ -47,8 +47,10 @@ return [
     */
 
     'logo' => '<b>Fashion</b>ROPA',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    //'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/logo.png',
+    //'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo_img_class' => 'brand-image img-circle elevation-5',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
     'logo_img_alt' => 'AdminLTE',
@@ -270,12 +272,30 @@ return [
             'icon'        => 'fas fa-users',
             'label_color' => 'success',
         ],
+        
         [
             'text'        => 'Pedidos',
             'url'         => 'pedido',
             'icon'        => 'fas fa-truck',
             'label_color' => 'success',
         ],
+        
+        /*
+        [
+            'text'    => 'Pedidos',
+            'icon'    => 'fas fa-truck',
+            'submenu' => [
+                [
+                    'text' => 'Pedidos',
+                    'url'  => 'pedido',
+                ],
+                [
+                    'text' => 'Detalle de Pedido',
+                    'url'  => 'detallepedido',
+                ],
+            ],
+        ],
+*/
         [
             'text'        => 'Ventas',
             'url'         => 'venta',

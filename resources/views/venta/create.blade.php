@@ -21,9 +21,10 @@
         <label for="idcliente" class="form-label">Cliente</label>
     </div>
     <div class="mb-3">
-        <select name="idcliente" id="idcliente">
+        <select name="idcliente" id="idcliente" class="form-control">
+            <option value=""></option>
             @foreach($clientes as $cliente)
-            <option value="{{$cliente->id}}">{{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+            <option value="{{$cliente->id}}">{{$cliente->nombre}} {{$cliente->apellido}}</option>
             @endforeach
         </select>
     </div>

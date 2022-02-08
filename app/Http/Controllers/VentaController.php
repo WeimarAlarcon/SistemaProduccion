@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Venta;
+use App\Models\DetalleVenta;
 use App\Models\Cliente;
 use App\Models\Persona;
+use App\Models\Pedido;
+use App\Models\Producto;
 
 class VentaController extends Controller
 {
@@ -58,7 +61,13 @@ class VentaController extends Controller
      */
     public function show($id)
     {
-        //
+        $ventas = Venta::find($id);
+        $detalleventas= DetalleVenta::find($id);
+        $pedidos = Pedido::find($id);
+        $productos = Producto::all();
+        $clientes = Cliente::all();
+        //$detalleventas = DetalleVenta::with('idventa')->where('idcliente', $idcliente)->firstOrfail();
+        return view('venta.show', compact('detalleventas', 'ventas', 'productos', 'clientes', 'pedidos'));
     }
 
     /**

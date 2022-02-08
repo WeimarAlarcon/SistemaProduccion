@@ -7,6 +7,7 @@ use App\Models\Produccion;
 use App\Models\Pedido;
 use App\Models\DetallePedido;
 use App\Models\Insumo;
+use App\Models\Cliente;
 
 class ProduccionController extends Controller
 {
@@ -33,7 +34,8 @@ class ProduccionController extends Controller
     {
         $pedidos = Pedido::all();
         $insumos = Insumo::all();
-        return view('produccion.create', compact('pedidos', 'insumos'));
+        $clientes = Cliente::all();
+        return view('produccion.create', compact('pedidos', 'insumos', 'clientes'));
     }
 
     /**

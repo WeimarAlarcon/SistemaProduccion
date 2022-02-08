@@ -7,13 +7,12 @@
 @stop
 
 @section('content')
-<div class="container">
     <div>
         <a href="{{route('insumo.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nuevo Insumo</i></button></a>
     </div>
     <br>
     <table class="table table-ligth table-striped">
-    <thead class="bg-info">
+    <thead class="bg-primary">
         <tr>
         <th scope="col">id</th>
         <th scope="col">Codigo</th>
@@ -43,7 +42,6 @@
     </tr>
     @endforeach
     </table>
-</div>
 @stop
 
 @section('css')

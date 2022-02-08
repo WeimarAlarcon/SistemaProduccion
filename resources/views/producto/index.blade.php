@@ -7,13 +7,12 @@
 @stop
 
 @section('content')
-<div class="container">
     <div>
         <a href="{{route('producto.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nuevo Producto</i></button></a>
     </div>
     <br>
     <table class="table table-ligth table-striped">
-		<thead class="bg-info">
+		<thead class="bg-primary">
 					<th scope="col">id</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Precio Unitario(BS)</th>
@@ -37,7 +36,6 @@
             </tr>
         @endforeach
 	</table>
-</div>
 @stop
 
 @section('css')

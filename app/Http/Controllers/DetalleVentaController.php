@@ -64,7 +64,9 @@ class DetalleVentaController extends Controller
      */
     public function show($id)
     {
-        //
+        $detalleventas = DetalleVenta::find($id);
+        $ventas = Venta::with('id')->where('idventa', $idventa)->firstOrfail();
+        return view('detalleventa.show', compact('detalleventas', 'ventas'));
     }
 
     /**

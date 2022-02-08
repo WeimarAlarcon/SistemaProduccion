@@ -14,7 +14,7 @@ class Producto extends Model
     //const UPDATED_AT = null;
 
     use HasFactory;
-    protected $primaryKey = 'id';
+    //protected $primaryKey = 'id';
     //public $incrementing = false;
     protected $table = 'producto';
     protected $fillable = [

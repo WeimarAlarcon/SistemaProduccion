@@ -27,17 +27,19 @@
         <input type="number" name="cantidad" class="form-control" id="" value="{{$detallepedido->cantidad}}">
     </div>
     <div class="mb-3">
-        <label for="idpedido" class="form-label">Cantidad de Pedido del Cliente</label>
+        <label for="idpedido" class="form-label">Pedido del Cliente</label>
     </div>
     <div class="mb-3">
-        <select name="idpedido" id="idpedido">
+        <select name="idpedido" id="idpedido" class="form-control">
+                 
             @foreach($pedidos as $pedido)
-            
-            @if ($pedido->id == $detallepedido->idpedido)
-                <option value="{{$pedido->id}}" selected>Cant:{{$pedido->cantidad_total}} &nbsp; Cliente:{{$pedido->clientes->personas->nombre}} {{$pedido->clientes->personas->nombre}}</option>
+            @foreach ($clientes as $cliente)
+            @if ($pedido->id == $detallepedido->idpedido && $cliente->id == $pedido->idcliente)
+                <option value="{{$pedido->id}}" selected>{{$pedido->id}} &nbsp; {{$cliente->nombre}} &nbsp; {{$cliente->apellido}}</option>
             @else 
-                <option value="{{$pedido->id}}" >Cant:{{$pedido->cantidad_total}} &nbsp; Cliente:{{$pedido->clientes->personas->nombre}} {{$pedido->clientes->personas->nombre}}</option>
+                <option value="{{$pedido->id}}">{{$pedido->id}} &nbsp; {{$cliente->nombre}} &nbsp; {{$cliente->apellido}}</option>
             @endif
+            @endforeach
             @endforeach
         </select>
     </div>
@@ -45,7 +47,7 @@
         <label for="idproducto" class="form-label">Producto</label>
     </div>
     <div class="mb-3">
-        <select name="idproducto" id="idproducto">
+        <select name="idproducto" id="idproducto" class="form-control">
             @foreach($productos as $producto) 
             @if ($producto->id == $detallepedido->idproducto)
                 <option value="{{$producto->id}}" selected> {{$producto->nombre}}</option>

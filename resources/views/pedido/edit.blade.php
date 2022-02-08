@@ -26,17 +26,19 @@
         <label for="idcliente" class="form-label">Cliente</label>
     </div>
     <div class="mb-3">
-        <select name="idcliente" id="idcliente">
+        <select class="form-control" name="idcliente" aria-label="Default select example">
             @foreach($clientes as $cliente)
-            
             @if ($cliente->id == $pedido->idcliente)
-                <option value="{{$cliente->id}}" selected>{{$cliente->id}}  {{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+                <option value="{{$cliente->id}}" selected>{{$cliente->nombre}} {{$cliente->apellido}}</option>
             @else 
-                <option value="{{$cliente->id}}" >{{$cliente->id}}  {{$cliente->personas->nombre}} {{$cliente->personas->apellido}}</option>
+                <option value="{{$cliente->id}}">{{$cliente->nombre}} {{$cliente->apellido}}</option>
             @endif
             @endforeach
         </select>
     </div>
+    
+    
+    
     <button type="submit" class="btn btn-success">Actualizar</button>
     </form>
 @stop

@@ -17,7 +17,7 @@
       <label for="precio_unitario">Precio Unitario (BS)</label>
       <input type="text" name="precio_unitario" id="" class="form-control" required>
     </div>
-       <input type="submit" value="Registrar">
+      <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
 @stop
 

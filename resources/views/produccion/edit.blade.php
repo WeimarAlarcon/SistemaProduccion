@@ -18,12 +18,12 @@
         <label for="idpedido" class="form-label">Cantidad de pedido del Cliente</label>
     </div>
     <div class="mb-3">
-        <select name="idpedido" id="idpedido">
+        <select name="idpedido" id="idpedido" class="form-control">
             @foreach($pedidos as $pedido)
             @if ($pedido->id == $produccion->idpedido)
-                <option value="{{$pedido->id}}" selected>Cant.:{{$pedido->cantidad_total}} &nbsp Cliente:{{$pedido->clientes->personas->nombre}}{{$pedido->clientes->personas->apellido}}</option>
+                <option value="{{$pedido->id}}" selected>{{$pedido->cantidad_total}}</option>
             @else 
-                <option value="{{$pedido->id}}" >Cant.:{{$pedido->cantidad_total}} &nbsp Cliente:{{$pedido->clientes->personas->nombre}}{{$pedido->clientes->personas->apellido}}</option>
+                <option value="{{$pedido->id}}" >{{$pedido->cantidad_total}}</option>
             @endif
             @endforeach
         </select>
@@ -32,7 +32,7 @@
         <label for="idinsumo" class="form-label">Insumo</label>
     </div>
     <div class="mb-3">
-        <select name="idinsumo" id="idinsumo">
+        <select name="idinsumo" id="idinsumo" class="form-control">
             @foreach($insumos as $insumo)
             @if ($insumo->id == $produccion->idinsumo)
                 <option value="{{$insumo->id}}" selected>{{$insumo->nombre}}</option>

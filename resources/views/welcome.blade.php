@@ -13,9 +13,9 @@
 </html>
     <body class="antialiased">
     <div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><h3>Sistema de Produccion de Ropa</h3></a>
+            <a class="navbar-brand" href="#"><h4>Sistema de Produccion de Ropa</h4></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -29,9 +29,9 @@
                         @auth
                             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Inicio</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"><button type="button" class="btn btn-primary">Iniciar Sesión</button></a>
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline"><button type="button" class="btn btn-light">Iniciar Sesión</button></a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"><button type="button" class="btn btn-primary">Registrarse</button></a>
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"><button type="button" class="btn btn-light">Registrarse</button></a>
                             @endif
                         @endauth
                     </div>
@@ -45,7 +45,7 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <center>
-                        <img src="imagenes\inicio.jpg" alt="" height="100%" width="100%">
+                        <!--<img src="imagenes\inicio.jpg" alt="" height="100%" width="100%">-->
                     </center>
                 </div>
             </div>

@@ -7,13 +7,12 @@
 @stop
 
 @section('content')
-<div class="container">
     <div>
-        <a href="{{route('venta.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Crear Venta</i></button></a>
-        <a href="{{route('detalleventa.index')}}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right"> Detalle de Venta</i></button></a>
+        <a href="{{route('venta.create')}}"><button type="button" class="btn btn-primary"><i class="fas fa-plus-circle"> Nueva Venta</i></button></a>
+        <!--<a href="{{route('detalleventa.index')}}"><button type="button" class="btn btn-primary"><i class="fas fa-arrow-alt-circle-right"> Detalle de Venta</i></button></a>-->
     </div><br>
     <table class="table table-ligth table-striped">
-    <thead class="bg-info">
+    <thead class="bg-primary">
         <tr>
         <th scope="col">id</th>
         <th scope="col">Codigo</th>
@@ -21,6 +20,7 @@
         <th scope="col">celular</th>
         <th scope="col">Nombre</th>
         <th scope="col">Apellido</th>
+        <th scope="col">Detalle</th>
         <th scope="col">Operaciones</th>
         </tr>
     </thead>
@@ -30,8 +30,9 @@
         <td>{{$venta->codigo}}</td>
         <td>{{$venta->fecha}}</td>
         <td>{{$venta->clientes->celular}}</td>
-        <td>{{$venta->clientes->personas->nombre}}</td>
-        <td>{{$venta->clientes->personas->apellido}}</td>
+        <td>{{$venta->clientes->nombre}}</td>
+        <td>{{$venta->clientes->apellido}}</td>
+        <td><a class href="{{route('venta.show', $venta->id)}} "><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fas fa-eye"></i></button></a></td>
         <td>
             <a class href="{{route('venta.edit',$venta->id)}}"><button type="button" class="btn btn-success"><i class="fas fa-edit"> Editar</i></button></a>
             <i class="fas ">
@@ -45,7 +46,6 @@
     </tr>
     @endforeach
     </table>
-</div>
 @stop
 
 @section('css')
